@@ -1,0 +1,87 @@
+$success: #87EA55;
+$alert: #F64D52;
+$warning: #EAAB0E;
+$size: 1;
+$duration: .5s;
+
+.notifire-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.notifire {
+  width: $size * 300px;
+  height: $size * 75px;
+
+  margin: 10px 10px 0;
+
+  display: flex;
+  align-items: space-around;
+  justify-content: space-between;
+
+  border-radius: $size * 10px;
+
+  animation-name: fire;
+  animation-duration: $duration;
+
+  &.n-success {
+    background: $success;
+  }
+
+  &.n-alert {
+    background: $alert;
+  }
+
+  &.n-warning {
+    background: $warning;
+  }
+
+  &.n-remove {
+    animation-name: backfire;
+    animation-duration: $duration;
+  }
+
+  & .icon {
+    width: 100px * $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em * $size;
+  }
+
+  & .content {
+    width: 200px * $size;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p, h2 {
+      margin: 0;
+    }
+    p {
+      font-size: $size * 18px;
+    }
+    h2 {
+      font-size: $size * 23px;
+    }
+  }
+}
+
+@keyframes fire {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+@keyframes backfire {
+  to {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
